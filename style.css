@@ -1,0 +1,75 @@
+/* --- CSS Umum dan Reset Dasar --- */
+:root {
+    /* Variabel Warna */
+    --primary-color: #6a0dad; /* Ungu gelap */
+    --secondary-color: #ffc107; /* Kuning terang */
+    --text-color-light: #f8f9fa; /* Hampir putih */
+    --text-color-dark: #343a40; /* Abu gelap */
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #212529;
+
+    /* Variabel Font */
+    --font-family-sans: 'Poppins', sans-serif; /* Poppins adalah font modern yang bersih */
+    --font-family-serif: 'Merriweather', serif;
+}
+
+body {
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--bg-color-light);
+    margin: 0;
+    padding: 20px;
+    display: flex; /* Untuk contoh button di tengah */
+    justify-content: center; /* Untuk contoh button di tengah */
+    align-items: center; /* Untuk contoh button di tengah */
+    min-height: 100vh; /* Agar button di tengah halaman penuh */
+}
+
+/* --- Styling Tombol (Button) yang Menarik --- */
+.cool-button {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px; /* Sudut sedikit membulat */
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+    transition: all 0.3s ease; /* Transisi halus untuk hover/active */
+    letter-spacing: 0.5px; /* Sedikit jarak antar huruf */
+    text-transform: uppercase; /* Huruf kapital */
+    outline: none; /* Hilangkan outline default */
+}
+
+.cool-button:hover {
+    background-color: #8b3dc4; /* Warna sedikit lebih terang saat hover */
+    transform: translateY(-3px); /* Sedikit naik saat hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Bayangan lebih intens */
+}
+
+.cool-button:active {
+    transform: translateY(0); /* Kembali ke posisi semula saat diklik */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Bayangan sedikit mengecil */
+    background-color: #5a0a9a; /* Warna sedikit lebih gelap saat aktif */
+}
+
+/* --- Contoh untuk elemen lain (Opsional) --- */
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Responsivitas dasar */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .cool-button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+}

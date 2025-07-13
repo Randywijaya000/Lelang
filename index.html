@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - LelangInYuk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- Palet Warna Baru dan Konfigurasi Dasar --- */
+        :root {
+            --primary-color: #5D001E; /* Maroon Sangat Gelap, hampir Burgundy */
+            --secondary-color: #333333; /* Abu-abu Gelap untuk teks */
+            --accent-color: #DAA520; /* Goldenrod, Emas yang lebih kaya */
+            --text-color-light: #F0F0F0; /* Abu-abu sangat terang */
+            --text-color-dark: #2A2A2A; /* Abu-abu gelap untuk kontras */
+            --light-bg: #F8F8F8; /* Latar belakang terang yang bersih */
+            --dark-bg: #1C1C1C; /* Latar belakang sangat gelap untuk footer/kontras */
+            --card-shadow: rgba(0, 0, 0, 0.15);
+            --hover-shadow: rgba(0, 0, 0, 0.3);
+            --header-bg: #5D001E; /* Menggunakan primary-color untuk header */
+        }
+
+        /* Reset dan Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px; /* Reduced max-width for overall smaller feel */
+            margin: 0 auto;
+            padding: 0 1rem; /* Slightly reduced padding */
+        }
+
+        /* --- Header dan Navigasi --- */
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1rem 0; /* Reduced padding */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Slightly less deep shadow */
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem; /* Reduced font size */
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.5rem; /* Reduced gap between menu items */
+            flex-wrap: wrap;
+        }
+
+        .main-nav li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem; /* Reduced font size */
+            padding: 0.4rem 0.8rem; /* Reduced padding */
+            border-radius: 0.4rem;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-nav li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .main-nav li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .main-nav li a:hover::before {
+            left: 100%;
+        }
+
+        .main-nav li a.active-page {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid var(--accent-color); /* Slightly thinner border */
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            background: url('komponen/gambar.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 6rem 1rem; /* Reduced padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px; /* Reduced min-height */
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(93, 0, 30, 0.8) 0%, rgba(51, 51, 51, 0.7) 100%); /* Slightly less opaque overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px; /* Reduced max-width */
+            margin-bottom: 2rem; /* Reduced margin */
+        }
+
+        .hero-promo {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly more transparent */
+            padding: 0.8rem 1.8rem; /* Reduced padding */
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem; /* Reduced font size */
+            font-weight: bold;
+            backdrop-filter: blur(5px); /* Less blur */
+            border: 1px solid var(--accent-color); /* Thinner border */
+            animation: fadeIn 1s ease-out;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .hero-promo span {
+            color: var(--accent-color);
+            font-size: 1.3em; /* Slightly smaller span */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem; /* Reduced font size */
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem; /* Reduced font size */
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1.2s ease-out;
+            opacity: 0.9;
+        }
+
+        /* Search Bar di Hero */
+        .hero-search-bar {
+            display: flex;
+            gap: 1.2rem; /* Reduced gap */
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 1.8rem; /* Reduced padding */
+            border-radius: 50px; /* Slightly less rounded */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 700px; /* Reduced max-width */
+            margin-top: 2.5rem;
+            animation: fadeIn 1.3s ease-out;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .hero-search-bar input {
+            border: none;
+            padding: 0.8rem 1.2rem; /* Reduced padding */
+            border-radius: 30px;
+            font-size: 1.1rem; /* Reduced font size */
+            flex-grow: 1;
+            background-color: #F5F5F5;
+            outline: none;
+            transition: all 0.3s ease;
+            color: var(--text-color-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .hero-search-bar input:focus {
+            box-shadow: 0 0 0 4px rgba(93, 0, 30, 0.3); /* Smaller focus shadow */
+            background-color: white;
+            border-color: var(--primary-color);
+        }
+
+        .hero-search-bar button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7B0024 100%);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem; /* Reduced padding */
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.15rem; /* Reduced font size */
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(93, 0, 30, 0.4);
+            text-transform: uppercase;
+        }
+
+        .hero-search-bar button:hover {
+            background: linear-gradient(135deg, #7B0024 0%, var(--primary-color) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(93, 0, 30, 0.5);
+        }
+
+        /* Statistik Lelang */
+        .auction-stats {
+            background-color: rgba(0, 0, 0, 0.8); /* Slightly less dark */
+            padding: 1.5rem 2.5rem; /* Reduced padding */
+            border-radius: 1rem;
+            text-align: center;
+            font-size: 1.3rem; /* Reduced font size */
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px); /* Less blur */
+            animation: fadeIn 1.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .auction-stats img {
+            height: 3rem; /* Reduced image size */
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 6px rgba(218, 165, 32, 0.7));
+        }
+
+        .auction-stats span {
+            display: block;
+            font-weight: bold;
+            font-size: 2.5rem; /* Reduced font size */
+            color: var(--accent-color);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 0.3rem;
+        }
+
+        /* --- Why Choose Us Section --- */
+        .why-choose-us {
+            padding: 6rem 1rem; /* Reduced padding */
+            background-color: white;
+            box-shadow: inset 0 5px 20px rgba(0,0,0,0.05); /* Lighter shadow */
+        }
+
+        .why-choose-us h2, .featured-auctions h2, .testimonials h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem; /* Reduced font size */
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 3rem; /* Reduced margin */
+            text-align: center;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.08);
+        }
+
+        .why-choose-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width */
+            gap: 2.5rem; /* Reduced gap */
+            text-align: center;
+        }
+
+        .why-choose-us-card {
+            background-color: var(--light-bg);
+            padding: 2.5rem; /* Reduced padding */
+            border-radius: 15px; /* Slightly less rounded */
+            box-shadow: 0 10px 25px var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e8e8e8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-choose-us-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px; /* Thinner line */
+            background-color: var(--accent-color);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .why-choose-us-card:hover {
+            transform: translateY(-10px); /* Less lift */
+            box-shadow: 0 15px 35px var(--hover-shadow);
+            border-color: var(--primary-color);
+        }
+
+        .why-choose-us-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .why-choose-us-card i {
+            font-size: 3.5rem; /* Reduced icon size */
+            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            animation: bounceIn 0.8s ease-out;
+        }
+
+        .why-choose-us-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem; /* Reduced font size */
+            color: var(--secondary-color);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .why-choose-us-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1rem; /* Reduced font size */
+        }
+
+        /* --- Featured Auctions Section --- */
+        .featured-auctions {
+            padding: 6rem 1rem;
+            background-color: #F2F2F2; /* Slightly less elegant background */
+        }
+
+        .featured-auctions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width */
+            gap: 2rem; /* Reduced gap */
+        }
+
+        .auction-card {
+            background-color: white;
+            border-radius: 20px; /* Slightly less rounded */
+            box-shadow: 0 10px 30px var(--card-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #e5e5e5;
+        }
+
+        .auction-card:hover {
+            transform: translateY(-8px); /* Less lift */
+            box-shadow: 0 15px 35px var(--hover-shadow);
+            border-color: var(--accent-color);
+        }
+
+        .auction-image {
+            width: 100%;
+            height: 220px; /* Reduced image height */
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+
+        .auction-card:hover .auction-image {
+            transform: scale(1.03); /* Less zoom */
+        }
+
+        .auction-details {
+            padding: 2rem; /* Reduced padding */
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auction-details h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem; /* Reduced font size */
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .auction-details ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .auction-details ul li {
+            color: #666;
+            font-size: 0.95rem; /* Reduced font size */
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .auction-details ul li strong {
+            color: var(--text-color-dark);
+            min-width: 80px; /* Slightly smaller min-width */
+            margin-right: 8px;
+        }
+
+        .auction-details .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.5rem; /* Reduced font size */
+            margin-top: auto;
+            text-align: right;
+            border-top: 1px dashed #eee;
+            padding-top: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .auction-details .bid-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem; /* Reduced margin */
+        }
+
+        .auction-details .countdown {
+            font-size: 1.1rem; /* Reduced font size */
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .auction-details .countdown i {
+            color: var(--accent-color);
+            font-size: 1.3em;
+        }
+
+        .auction-details .bid-button {
+            background: linear-gradient(45deg, var(--accent-color) 0%, #E6B800 100%);
+            color: var(--text-color-dark);
+            border: none;
+            padding: 0.8rem 1.5rem; /* Reduced padding */
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.05rem; /* Reduced font size */
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-transform: uppercase;
+        }
+
+        .auction-details .bid-button:hover {
+            background: linear-gradient(45deg, #E6B800 0%, var(--accent-color) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials {
+            padding: 6rem 1rem;
+            background-color: var(--light-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2.5rem; /* Reduced padding */
+            border-radius: 15px;
+            box-shadow: 0 10px 25px var(--card-shadow);
+            position: relative;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 8px solid var(--primary-color); /* Thinner border */
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 15px; /* Adjusted position */
+            left: 15px; /* Adjusted position */
+            font-size: 2.5rem; /* Reduced size */
+            color: rgba(93, 0, 30, 0.08); /* More transparent */
+            z-index: 0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px var(--hover-shadow);
+        }
+
+        .testimonial-card p {
+            color: var(--text-color-dark);
+            font-style: italic;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem; /* Reduced font size */
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.15rem; /* Reduced font size */
+            display: block;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem; /* Reduced padding */
+            margin-top: 3rem;
+            background-color: var(--dark-bg);
+            color: white;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 0.95rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted column size */
+            gap: 2.5rem; /* Reduced gap */
+            text-align: left;
+        }
+
+        footer h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem; /* Reduced font size */
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Thinner border */
+            padding-bottom: 0.8rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li a {
+            color: #ccc; /* Slightly lighter links */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1rem; /* Reduced font size */
+        }
+
+        footer li a:hover {
+            color: var(--accent-color);
+            transform: translateX(8px);
+        }
+
+        footer .copyright {
+            margin-top: 2.5rem;
+            grid-column: 1 / -1;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            color: #999; /* Lighter copyright text */
+            font-size: 0.9rem;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 1.8rem; /* Reduced icon size */
+            margin-right: 1.2rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.08);
+        }
+
+        /* --- Modal Styles (Disesuaikan dengan warna baru & tampilan mewah) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8); /* Slightly less dark overlay */
+            align-items: center;
+            justify-content: center;
+            animation: fadeInOverlay 0.3s ease-out;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 3rem; /* Reduced padding */
+            border-radius: 20px; /* Slightly less rounded */
+            width: 90%;
+            max-width: 600px; /* Reduced max-width */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            animation: slideInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-top: 10px solid var(--primary-color); /* Thinner border */
+            text-align: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #aaa;
+            font-size: 2.5rem; /* Reduced size */
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            transform: scale(1.08);
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem; /* Reduced font size */
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.08);
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem; /* Reduced margin */
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 0.9rem 1.2rem; /* Reduced padding */
+            border: 1px solid #ccc; /* Thinner border */
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--text-color-dark);
+            background-color: #fcfcfc;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group input[type="number"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(93, 0, 30, 0.25);
+            background-color: white;
+        }
+
+        .modal-submit-button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7B0024 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.2rem; /* Reduced padding */
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.15rem; /* Reduced font size */
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(93, 0, 30, 0.3);
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+            width: auto;
+            display: inline-block;
+        }
+
+        .modal-submit-button:hover {
+            background: linear-gradient(135deg, #7B0024 0%, var(--primary-color) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(93, 0, 30, 0.4);
+        }
+
+        /* --- Success Modal Styles --- */
+        .success-modal-content {
+            border-top: 8px solid var(--accent-color); /* Thinner border */
+            background-color: #fefefe;
+            padding: 2.5rem; /* Reduced padding */
+            border-radius: 18px;
+            width: 90%;
+            max-width: 450px; /* Reduced max-width */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            position: relative;
+            animation: zoomIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+        }
+        
+        .success-modal-content i.fa-check-circle {
+            color: var(--accent-color);
+            font-size: 4rem; /* Reduced size */
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 6px rgba(218, 165, 32, 0.4));
+        }
+        
+        .success-modal-content h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem; /* Reduced font size */
+            margin-bottom: 1rem;
+        }
+        
+        .success-modal-content p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .success-modal-content button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7B0024 100%);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px rgba(93, 0, 30, 0.25);
+        }
+
+        .success-modal-content button:hover {
+            background: linear-gradient(135deg, #7B0024 0%, var(--primary-color) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(93, 0, 30, 0.35);
+        }
+
+
+        /* --- Animasi --- */
+        @keyframes fadeInOverlay {
+            from { background-color: rgba(0,0,0,0); }
+            to { background-color: rgba(0,0,0,0.8); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(100px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-80px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.1); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 900px) {
+            header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero-section {
+                padding: 6rem 1rem;
+                min-height: 450px;
+            }
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .auction-stats {
+                flex-direction: column;
+                width: 95%;
+                margin: 1.5rem auto 0 auto;
+                padding: 1.2rem;
+            }
+            .auction-stats span {
+                font-size: 2.2rem;
+            }
+            .hero-search-bar {
+                flex-direction: column;
+                align-items: center;
+                max-width: 95%;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .hero-search-bar input {
+                width: 100%;
+                margin-bottom: 0.2rem;
+            }
+            .why-choose-us-grid, .featured-auctions-grid, .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .why-choose-us h2, .featured-auctions h2, .testimonials h2 {
+                font-size: 3rem;
+            }
+            .auction-card {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .main-nav ul {
+                gap: 0.5rem;
+                padding-top: 0.8rem;
+            }
+            .main-nav li a {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-promo {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .auction-stats {
+                font-size: 1.1rem;
+            }
+            .auction-stats span {
+                font-size: 1.8rem;
+            }
+            .why-choose-us h2, .featured-auctions h2, .testimonials h2 {
+                font-size: 2.2rem;
+            }
+            .why-choose-us-card i {
+                font-size: 3rem;
+            }
+            .why-choose-us-card h3 {
+                font-size: 1.5rem;
+            }
+            .auction-details h3 {
+                font-size: 1.4rem;
+            }
+            .auction-details .price {
+                font-size: 1.2rem;
+            }
+            .modal-content {
+                padding: 2rem;
+            }
+            .modal-content h2 {
+                font-size: 2rem;
+            }
+            .success-modal-content i.fa-check-circle {
+                font-size: 3rem;
+            }
+            .success-modal-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>LelangInYuk</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active-page">Beranda</a></li>
+                    <li><a href="cara-kerja.html">Cara Kerja</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                    <li><a href="login/login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-promo">Penawaran Eksklusif!<span> Diskon 10% untuk Lelang Pertama Anda</span></div>
+                <h2>Temukan Harta Karun Anda. Jadilah Penawar Terbaik.</h2>
+                <p>Jelajahi berbagai lelang menarik, dari barang koleksi langka hingga elektronik terbaru. Bergabunglah sekarang dan rasakan sensasi memenangkan barang impian Anda!</p>
+            </div>
+            </div>
+        </section>
+
+        <section class="featured-auctions">
+            <div class="container">
+                <h2>Lelang Populer</h2>
+                <div class="featured-auctions-grid">
+                    <div class="auction-card">
+                        <img src="komponen/zx25.jpg" alt="Kawasaki Ninja ZX-25R 2023" class="auction-image">
+                        <div class="auction-details">
+                            <h3>Kawasaki Ninja ZX-25R 2023</h3>
+                            <ul>
+                                <li><strong>Tipe:</strong> Motor Sport Impian</li>
+                                <li><strong>Performa:</strong> Tinggi dengan suara knalpot menggelegar</li>
+                                <li><strong>Kondisi:</strong> Jarang dipakai, seperti baru</li>
+                                <li><strong>Deskripsi:</strong> Sensasi balap jalanan yang tak tertandingi! Motor ini adalah pilihan sempurna bagi mereka yang mencari adrenalin.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 105.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 3 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="./komponen/hondacivic.jpg" alt="Honda Civic Type R 2020" class="auction-image">
+                        <div class="auction-details">
+                            <h3>Honda Civic Type R 2020</h3>
+                            <ul>
+                                <li><strong>Kondisi:</strong> Sangat baik, siap pakai</li>
+                                <li><strong>Kilometer:</strong> Rendah</li>
+                                <li><strong>Deskripsi:</strong> Sportcar performa tinggi dengan desain agresif yang memukau. Ideal untuk penggemar kecepatan dan gaya.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 650.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 5 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="komponen/cbr1000rr.jpg" alt="Honda CBR1000RR-R Fireblade SP 2022" class="auction-image">
+                        <div class="auction-details">
+                            <h3>Honda CBR1000RR-R Fireblade SP 2022</h3>
+                            <ul>
+                                <li><strong>Tipe:</strong> Superbike Performa</li>
+                                <li><strong>Performa:</strong> Tenaga brutal, handling presisi</li>
+                                <li><strong>Kondisi:</strong> Pristine, seperti baru</li>
+                                <li><strong>Deskripsi:</strong> Didesain untuk lintasan balap, motor ini menawarkan performa puncak dengan teknologi terbaru.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 750.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 2 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="./komponen/bmwm4.jpg" alt="BMW M4 Coupe 2021" class="auction-image">
+                        <div class="auction-details">
+                            <h3>BMW M4 Coupe 2021</h3>
+                            <ul>
+                                <li><strong>Kondisi:</strong> Terawat dengan baik</li>
+                                <li><strong>Kilometer:</strong> Sedang</li>
+                                <li><strong>Deskripsi:</strong> Kombinasi sempurna antara kemewahan dan performa. Desain ikonik dengan mesin bertenaga.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 1.200.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 4 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="./komponen/ducati.jpg" alt="Ducati Panigale V4 S 2023" class="auction-image">
+                        <div class="auction-details">
+                            <h3>Ducati Panigale V4 S 2023</h3>
+                            <ul>
+                                <li><strong>Tipe:</strong> Motor Balap Jalanan</li>
+                                <li><strong>Performa:</strong> Sensasi berkendara tak tertandingi</li>
+                                <li><strong>Kondisi:</strong> Sangat istimewa, low km</li>
+                                <li><strong>Deskripsi:</strong> Sebuah mahakarya teknik Italia, menawarkan kecepatan dan keindahan dalam satu paket.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 850.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 6 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="komponen/buggati.jpg" alt="Bugatti Chiron 2018" class="auction-image">
+                        <div class="auction-details">
+                            <h3>Bugatti Chiron 2018</h3>
+                            <ul>
+                                <li><strong>Kondisi:</strong> Sangat mewah, edisi terbatas</li>
+                                <li><strong>Kilometer:</strong> Sangat rendah</li>
+                                <li><strong>Deskripsi:</strong> Hypercar paling eksklusif di dunia. Kecepatan dan kemewahan tanpa batas.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 50.000.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 7 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="./komponen/bmws1000rr.jpg" alt="BMW S1000RR 2021" class="auction-image">
+                        <div class="auction-details">
+                            <h3>BMW S1000RR 2021</h3>
+                            <ul>
+                                <li><strong>Tipe:</strong> Superbike Sport</li>
+                                <li><strong>Performa:</strong> Agresif dan responsif</li>
+                                <li><strong>Kondisi:</strong> Excellent, siap gas</li>
+                                <li><strong>Deskripsi:</strong> Perpaduan sempurna antara kekuatan Jerman dan keanggunan desain.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 580.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 1 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auction-card">
+                        <img src="./komponen/ninjah2.jpg" alt="Kawasaki Ninja H2 2020" class="auction-image">
+                        <div class="auction-details">
+                            <h3>Kawasaki Ninja H2 2020</h3>
+                            <ul>
+                                <li><strong>Tipe:</strong> Hyperbike Supercharged</li>
+                                <li><strong>Performa:</strong> Akselerasi gila, teknologi canggih</li>
+                                <li><strong>Kondisi:</strong> Terawat, sangat kencang</li>
+                                <li><strong>Deskripsi:</strong> Salah satu motor produksi tercepat di dunia, memberikan pengalaman berkendara yang mendebarkan.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 700.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 3 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="auction-card">
+                        <img src="./komponen/bmw.jpg" alt="BMW i8 2018" class="auction-image">
+                        <div class="auction-details">
+                            <h3>BMW i8 2018</h3>
+                            <ul>
+                                <li><strong>Kondisi:</strong> Sangat baik, hybrid</li>
+                                <li><strong>Kilometer:</strong> Rendah</li>
+                                <li><strong>Deskripsi:</strong> Sportscar hybrid futuristik dengan desain menawan dan efisiensi bahan bakar yang luar biasa.</li>
+                            </ul>
+                            <div class="price">Harga Awal: Rp 1.800.000.000</div>
+                            <div class="bid-info">
+                                <span class="countdown"><i class="far fa-clock"></i> Tersisa: 5 hari</span>
+                                <button class="bid-button">Tawar Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us">
+            <div class="container">
+                <h2>Mengapa Memilih Kami?</h2>
+                <div class="why-choose-us-grid">
+                    <div class="why-choose-us-card">
+                        <i class="fas fa-gavel"></i>
+                        <h3>Pilihan Lelang Beragam</h3>
+                        <p>Temukan berbagai macam barang, dari barang koleksi langka hingga elektronik terbaru, semuanya dalam satu tempat.</p>
+                    </div>
+                    <div class="why-choose-us-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Keamanan Terjamin</h3>
+                        <p>Kami memprioritaskan keamanan Anda. Setiap transaksi dilindungi dan diverifikasi untuk pengalaman lelang yang aman.</p>
+                    </div>
+                    <div class="why-choose-us-card">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Harga Kompetitif</h3>
+                        <p>Dapatkan harga terbaik untuk barang impian Anda. Lelang kami memungkinkan Anda menawar sesuai keinginan Anda.</p>
+                    </div>
+                    <div class="why-choose-us-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Dukungan Pelanggan 24/7</h3>
+                        <p>Tim dukungan kami siap membantu Anda kapan saja, memastikan pengalaman lelang yang mulus dan menyenangkan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Apa Kata Pelanggan Kami?</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"Saya sangat puas dengan LelangInYuk! Prosesnya mudah, barangnya berkualitas, dan saya berhasil mendapatkan apa yang saya inginkan dengan harga terbaik."</p>
+                        <span class="testimonial-author">- Sarah P.</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Platform ini sangat intuitif dan aman. Saya merekomendasikannya kepada siapa saja yang mencari barang unik dan bernilai."</p>
+                        <span class="testimonial-author">- David L.</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Layanan pelanggan yang luar biasa! Mereka sangat responsif dan membantu saya dengan setiap pertanyaan yang saya miliki."</p>
+                        <span class="testimonial-author">- Emily R.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>LelangInYuk</h3>
+                <p>Platform lelang online terkemuka untuk menemukan dan memenangkan barang impian Anda.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="cara-kerja.html">Cara Kerja</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href>Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Dukungan</h3>
+                <ul>
+                    <li><a href="tentang-kami.html">Pusat Bantuan</a></li>
+                    <li><a href="kontak.html">Hubungi Kami</a></li>
+                    <li><a href="cara-kerja.html">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 LelangInYuk. 
+        </div>
+    </footer>
+
+    <div id="bidModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Lakukan Penawaran</h2>
+            <p>Masukkan detail Anda untuk menawar pada item ini.</p>
+            <form id="bidForm">
+                <div class="form-group">
+                    <label for="bidName">Nama Lengkap:</label>
+                    <input type="text" id="bidName" name="bidName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bidEmail">Email:</label>
+                    <input type="email" id="bidEmail" name="bidEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="bidPhone">Nomor Telepon:</label>
+                    <input type="tel" id="bidPhone" name="bidPhone">
+                </div>
+                <div class="form-group">
+                    <label for="bidAmount">Jumlah Penawaran (IDR):</label>
+                    <input type="number" id="bidAmount" name="bidAmount" min="100000" required>
+                </div>
+                <button type="submit" class="modal-submit-button">Kirim Penawaran</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="success-modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Penawaran Berhasil!</h2>
+            <p>Penawaran Anda telah berhasil dikirim. Kami akan memberitahu Anda tentang status lelang.</p>
+            <button id="closeSuccessModal">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality (you already have this or can add it)
+        const bidButtons = document.querySelectorAll('.bid-button');
+        const bidModal = document.getElementById('bidModal');
+        const closeButton = document.querySelector('.close-button');
+        const successModal = document.getElementById('successModal');
+        const closeSuccessModalButton = document.getElementById('closeSuccessModal');
+        const bidForm = document.getElementById('bidForm');
+
+        bidButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                bidModal.style.display = 'flex';
+            });
+        });
+
+        closeButton.addEventListener('click', () => {
+            bidModal.style.display = 'none';
+        });
+
+        closeSuccessModalButton.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == bidModal) {
+                bidModal.style.display = 'none';
+            }
+            if (event.target == successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+
+        bidForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            bidModal.style.display = 'none';
+            successModal.style.display = 'flex';
+            bidForm.reset();
+        });
+    </script>
+</body>
+</html>

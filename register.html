@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Lelanginyuk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variabel CSS untuk kemudahan kustomisasi */
+        :root {
+            --primary-color: #A0522D; /* Warna coklat tua yang lebih kaya, sesuai dengan logo "Lelanginyuk" */
+            --primary-dark-color: #8B4513; /* Versi lebih gelap untuk hover */
+            --secondary-color: #F8F9FA; /* Off-white untuk latar belakang body */
+            --card-background: #FFFFFF; /* Putih bersih untuk card registrasi */
+            --text-color: #333;
+            --light-text-color: #777;
+            --border-color: #E0E0E0; /* Border input yang lebih halus */
+            --shadow-light: rgba(0, 0, 0, 0.08); /* Shadow lebih ringan */
+            --shadow-medium: rgba(0, 0, 0, 0.15); /* Shadow sedang */
+            --transition-speed: 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Memastikan body minimal setinggi viewport */
+            background: linear-gradient(135deg, #A0522D 0%, #CD853F 100%); /* Gradien coklat ke oranye */
+            background-size: cover; /* Pastikan gradien menutupi seluruh area */
+            color: var(--text-color);
+            box-sizing: border-box; /* Pastikan padding dan border termasuk dalam total ukuran elemen */
+        }
+
+        .register-container {
+            background-color: var(--card-background);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px var(--shadow-medium); /* Shadow yang lebih dalam */
+            padding: 40px;
+            width: 100%;
+            max-width: 450px; /* Lebar maksimal form registrasi, mungkin sedikit lebih lebar dari login */
+            text-align: center;
+            animation: fadeIn 1s ease-out; /* Animasi fade-in saat load */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .register-container h2 {
+            font-family: 'Oswald', sans-serif; /* Gunakan Oswald untuk judul */
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            letter-spacing: 1px; /* Sedikit spasi antar huruf */
+        }
+
+        .register-container p.subtitle {
+            color: var(--light-text-color);
+            margin-bottom: 35px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-text-color);
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase; /* Huruf kapital untuk label */
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 14px 18px; /* Padding lebih besar */
+            border: 1px solid var(--border-color);
+            border-radius: 10px; /* Sudut lebih membulat */
+            font-size: 1.05em;
+            color: var(--text-color);
+            background-color: var(--secondary-color); /* Latar belakang input sedikit abu-abu */
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="password"]:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(160, 82, 45, 0.2); /* Shadow saat fokus */
+            background-color: var(--white-color); /* Kembali putih saat fokus */
+            outline: none;
+        }
+
+        .register-button {
+            width: 100%;
+            padding: 16px; /* Padding tombol lebih besar */
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 10px; /* Sudut tombol membulat */
+            font-size: 1.2em;
+            font-weight: 700; /* Lebih bold */
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+            letter-spacing: 0.5px;
+            margin-top: 10px; /* Sedikit spasi di atas tombol */
+        }
+
+        .register-button:hover {
+            background-color: var(--primary-dark-color);
+            transform: translateY(-3px); /* Efek angkat tombol */
+            box-shadow: 0 8px 20px var(--shadow-light); /* Shadow saat hover */
+        }
+
+        .register-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--light-text-color);
+            font-size: 0.95em;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color var(--transition-speed);
+        }
+
+        .login-link a:hover {
+            color: var(--primary-dark-color);
+            text-decoration: underline;
+        }
+
+        /* Responsivitas untuk layar kecil */
+        @media (max-width: 500px) {
+            .register-container {
+                padding: 30px 25px;
+                margin: 20px; /* Beri sedikit margin agar tidak terlalu mepet tepi */
+            }
+            .register-container h2 {
+                font-size: 2em;
+            }
+            .register-button {
+                padding: 14px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>DAFTAR AKUN</h2>
+        <p class="subtitle">Buat akun baru Anda di Lelanginyuk dan mulai bergabung dalam lelang!</p>
+
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="full_name">Nama Lengkap</label>
+                <input type="text" id="full_name" name="full_name" placeholder="Masukkan nama lengkap Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan alamat email Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Buat username unik Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Buat password Anda (min. 8 karakter)" required minlength="8">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Konfirmasi Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Ketik ulang password Anda" required minlength="8">
+            </div>
+            <button type="submit" class="register-button">DAFTAR SEKARANG</button>
+        </form>
+
+        <p class="login-link">
+            Sudah punya akun? <a href="login.html">Login di sini</a>
+        </p>
+    </div>
+
+    <script>
+        // Opsional: JavaScript untuk validasi sederhana password match
+        const password = document.getElementById('password');
+        const confirm_password = document.getElementById('confirm_password');
+
+        function validatePassword(){
+            if(password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Password tidak cocok!");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+</body>
+</html>

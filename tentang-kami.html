@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - LelangInYuk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- Palet Warna Baru dan Konfigurasi Dasar --- */
+        :root {
+            --primary-color: #5D001E; /* Maroon Sangat Gelap, hampir Burgundy */
+            --secondary-color: #333333; /* Abu-abu Gelap untuk teks */
+            --accent-color: #DAA520; /* Goldenrod, Emas yang lebih kaya */
+            --text-color-light: #F0F0F0; /* Abu-abu sangat terang */
+            --text-color-dark: #2A2A2A; /* Abu-abu gelap untuk kontras */
+            --light-bg: #F8F8F8; /* Latar belakang terang yang bersih */
+            --dark-bg: #1C1C1C; /* Latar belakang sangat gelap untuk footer/kontras */
+            --card-shadow: rgba(0, 0, 0, 0.15);
+            --hover-shadow: rgba(0, 0, 0, 0.3);
+            --header-bg: #5D001E; /* Menggunakan primary-color untuk header */
+        }
+
+        /* Reset dan Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px; /* Reduced max-width for overall smaller feel */
+            margin: 0 auto;
+            padding: 0 1rem; /* Slightly reduced padding */
+        }
+
+        /* --- Header dan Navigasi --- */
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1rem 0; /* Reduced padding */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Slightly less deep shadow */
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem; /* Reduced font size */
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.5rem; /* Reduced gap between menu items */
+            flex-wrap: wrap;
+        }
+
+        .main-nav li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem; /* Reduced font size */
+            padding: 0.4rem 0.8rem; /* Reduced padding */
+            border-radius: 0.4rem;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-nav li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .main-nav li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .main-nav li a:hover::before {
+            left: 100%;
+        }
+
+        .main-nav li a.active-page {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid var(--accent-color); /* Slightly thinner border */
+        }
+
+        /* Styling for content sections on individual pages */
+        .page-content-section {
+            padding: 4rem 1rem;
+            background-color: white;
+            box-shadow: inset 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+        }
+
+        .page-content-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.08);
+        }
+
+        .page-content-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .page-content-section p, .page-content-section ul {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+        
+        .page-content-section ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem; /* Reduced padding */
+            margin-top: 3rem;
+            background-color: var(--dark-bg);
+            color: white;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 0.95rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted column size */
+            gap: 2.5rem; /* Reduced gap */
+            text-align: left;
+        }
+
+        footer h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem; /* Reduced font size */
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Thinner border */
+            padding-bottom: 0.8rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li a {
+            color: #ccc; /* Slightly lighter links */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1rem; /* Reduced font size */
+        }
+
+        footer li a:hover {
+            color: var(--accent-color);
+            transform: translateX(8px);
+        }
+
+        footer .copyright {
+            margin-top: 2.5rem;
+            grid-column: 1 / -1;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            color: #999; /* Lighter copyright text */
+            font-size: 0.9rem;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 1.8rem; /* Reduced icon size */
+            margin-right: 1.2rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.08);
+        }
+
+        /* Responsive Adjustments (sesuaikan jika diperlukan) */
+        @media (max-width: 900px) {
+            header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .main-nav ul {
+                justify-content: center;
+            }
+            .page-content-section h2 {
+                font-size: 2.5rem;
+            }
+            .page-content-section h3 {
+                font-size: 1.8rem;
+            }
+            footer .container {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .main-nav ul {
+                gap: 0.5rem;
+                padding-top: 0.8rem;
+            }
+            .main-nav li a {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .page-content-section h2 {
+                font-size: 2rem;
+            }
+            .page-content-section h3 {
+                font-size: 1.5rem;
+            }
+            .page-content-section p, .page-content-section ul {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>LelangInYuk</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="cara-kerja.html">Cara Kerja</a></li>
+                    <li><a href="tentang-kami.html" class="active-page">Tentang Kami</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                    <li><a href="login/login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-content-section container">
+            <h2>Tentang LelangInYuk</h2>
+            <p>Selamat datang di LelangInYuk, platform lelang online terdepan yang didedikasikan untuk menghubungkan pembeli dan penjual dari seluruh Indonesia dalam sebuah lingkungan yang transparan dan aman.</p>
+
+            <h3>Visi Kami</h3>
+            <p>Visi kami adalah menjadi ekosistem lelang digital paling tepercaya dan inovatif di Indonesia, yang memberdayakan individu untuk menemukan dan memiliki barang-barang berharga, sekaligus menciptakan peluang pasar yang luas bagi penjual.</p>
+
+            <h3>Misi Kami</h3>
+            <ul>
+                <li>Inovasi Berkelanjutan: Terus mengembangkan fitur dan teknologi terbaru untuk menyempurnakan pengalaman lelang online.</li>
+                <li>Keamanan dan Transparansi: Menjamin setiap transaksi berjalan dengan aman, adil, dan transparan bagi semua pihak.</li>
+                <li>Beragam Pilihan: Menyediakan pilihan barang lelang yang luas, mulai dari koleksi antik, otomotif, elektronik, hingga properti.</li>
+                <li>Dukungan Komunitas: Membangun komunitas pengguna yang aktif dan saling mendukung.</li>
+                <li>Pendidikan Pengguna: Memberikan panduan dan sumber daya untuk membantu pengguna memahami proses lelang dengan lebih baik.</li>
+            </ul>
+
+            <h3>Sejarah Kami</h3>
+            <p>LelangInYuk didirikan pada tahun 2023 dengan misi sederhana: membuat lelang dapat diakses oleh semua orang. Kami percaya bahwa setiap orang berhak memiliki kesempatan untuk menemukan barang impian mereka dan merasakan kegembiraan dalam proses penawaran.</p>
+
+            <h3>Nilai-nilai Kami</h3>
+            <ul>
+                <li>Integritas: Kami beroperasi dengan kejujuran dan etika tertinggi dalam setiap aspek bisnis kami.</li>
+                <li>Fokus Pelanggan: Kepuasan pengguna adalah prioritas utama kami.</li>
+                <li>Inovasi: Kami selalu mencari cara baru untuk meningkatkan dan memberikan nilai tambah.</li>
+                <li>Kolaborasi: Kami percaya pada kekuatan kerja sama dan membangun hubungan yang kuat.</li>
+            </ul>
+
+            <p>Terima kasih telah menjadi bagian dari perjalanan LelangInYuk. Kami berharap Anda menikmati pengalaman lelang Anda bersama kami!</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>LelangInYuk</h3>
+                <p>Platform lelang online terkemuka untuk menemukan barang-barang unik dan berharga.</p>
+            </div>
+            <div>
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="cara-kerja.html">Cara Kerja</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                    <li><a href="login/login.html">Login</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Ikuti Kami</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 LelangInYuk.</p>
+        </div>
+    </footer>
+</body>
+</html>
